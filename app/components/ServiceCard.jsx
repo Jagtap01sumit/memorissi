@@ -1,0 +1,23 @@
+import Link from "next/link";
+
+const ServiceCard = ({ title, image, icon }) => {
+  const slug = title.toLowerCase();
+  return (
+    <Link href={`/services/${slug}`}>
+      <div className="relative w-64 h-80 overflow-hidden rounded-lg shadow-lg cursor-pointer group">
+        <img
+          src={image}
+          alt={title}
+          className="w-full h-full object-cover transition-all duration-500 ease-in-out filter blur-[1px] group-hover:blur-0"
+        />
+
+        <div className="absolute inset-0 bg-[#2A2139]/70 transition-all duration-500 group-hover:bg-transparent ">
+          <div className="mb-2">{icon}</div>
+          <h3 className="text-xl font-serif">{title}</h3>
+        </div>
+      </div>
+    </Link>
+  );
+};
+
+export default ServiceCard;

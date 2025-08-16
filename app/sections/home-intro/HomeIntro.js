@@ -3,8 +3,8 @@ import { COLORS } from "@/app/utils";
 export default function HomeIntro() {
   return (
     <section
-      className="w-full bg-background text-white py-6 px-6"
-      style={{ backgroundColor: COLORS.background }}
+      className="w-full bg-background  py-6 px-6"
+      style={{ backgroundColor: COLORS.background, text: COLORS.textPrimary }}
     >
       <div className="text-center max-w-2xl mx-auto mb-0 md:mb-10">
         <p className="tracking-[0.2em] text-xs text-gray-300">

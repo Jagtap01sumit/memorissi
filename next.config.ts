@@ -1,14 +1,12 @@
+import { URL } from "url";
 
-const { URL } = require("url");
-
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseHost = new URL(supabaseUrl).hostname;
 
 const nextConfig = {
   images: {
     remotePatterns: [
       {
-
         protocol: "https",
         hostname: supabaseHost,
         pathname: "/storage/v1/object/**",
@@ -17,4 +15,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+export default nextConfig;

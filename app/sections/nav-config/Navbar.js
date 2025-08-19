@@ -5,24 +5,27 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { FiMenu, FiX } from "react-icons/fi";
 import { navLinks } from "@/app/data/NavLinks";
-import { COLORS, MEDIA } from "@/app/utils";
+import { COLORS } from "@/app/utils";
 import { fetchLogo } from "@/app/data/HeroData";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [url, setUrl] = useState(null);
+
   useEffect(() => {
     async function loadLogo() {
-      const heroUrl = await fetchLogo();
-      console.log("Fetched URL:", heroUrl);
-      if (heroUrl) {
-        setUrl(heroUrl);
+      const logoUrl = await fetchLogo();
+      console.log("Fetched URL:", logoUrl);
+      if (logoUrl) {
+        setUrl(logoUrl);
+        console.log(url, "logurl");
       } else {
-        console.log("SOMETHING WENT WRONG:", heroUrl);
+        console.log("SOMETHING WENT WRONG IN LOGOURL:", logoUrl);
       }
     }
     loadLogo();
   }, []);
+
   return (
     <nav
       className="w-full fixed top-0 left-0 z-50 px-6 md:px-16 py-4
@@ -53,7 +56,13 @@ export default function Navbar() {
         <div className="hidden md:flex justify-center">
           <Link href="/">
             {url && (
-              <Image src={url} alt="Logo" width={120} height={50} priority />
+              <Image
+                src={url || null}
+                alt="logo"
+                width={120}
+                height={50}
+                priority
+              />
             )}
           </Link>
         </div>
@@ -76,7 +85,7 @@ export default function Navbar() {
       {/* Mobile */}
       <div className="md:hidden col-span-3 flex w-full justify-between items-center">
         <Link href="/">
-          <Image src={MEDIA.images.logo} alt="Logo" width={100} height={40} />
+          <Image src={url} alt="Logo" width={100} height={40} />
         </Link>
         <button onClick={() => setMenuOpen(!menuOpen)} className="text-white">
           {menuOpen ? <FiX size={24} /> : <FiMenu size={24} />}

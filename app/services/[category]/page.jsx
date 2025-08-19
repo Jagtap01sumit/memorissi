@@ -1,21 +1,45 @@
 "use client";
-
-import { galleries } from "@/app/data/ServiceCategory";
+import { use } from "react";
+import { galleries, getTitleByIdForCategory } from "@/app/data/ServiceCategory";
 import { Navbar } from "@/app/sections";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { getIdFromTitle } from "../../data/ServiceCategory";
 
 export default function ServiceCategoryPage({ params }) {
-  const { category } = params;
-  const [obj, setObj] = useState([]);
+  const { category } = use(params);
+  const [gallery, setGallery] = useState([]);
 
-  const getCategoryImages = (category) => {
-    return Object.values(galleries).filter((g) => g.category === category);
-  };
+  const [categoryId, setCategoryId] = useState();
 
   useEffect(() => {
-    setObj(getCategoryImages(category) || []);
-  }, [category]);
+    async function loadGalleries() {
+      const { data, error } = await galleries();
+      if (error) {
+        console.error("Error fetching galleries:", error);
+        setGallery([]);
+      } else {
+        console.log("Fetched galleries:", data);
+        setGallery(data || []);
+      }
+    }
+    loadGalleries();
+  }, []);
+
+  useEffect(() => {
+    async function loadId() {
+      const { data, error } = await getIdFromTitle(category);
+      if (error) {
+        console.error("Error fetching id:", error);
+        setCategoryId();
+      } else {
+        console.log("Fetched id:", data);
+        setCategoryId(data.id);
+        console.log(categoryId, "cat");
+      }
+    }
+    loadId();
+  }, []);
 
   return (
     <div className="pt-10 md:pt-20">
@@ -25,41 +49,29 @@ export default function ServiceCategoryPage({ params }) {
           {category} Gallery
         </h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {obj.map((val, i) => (
-            <Link key={i} href={`/services/${category}/${val.id}`}>
-              <div className="relative group overflow-hidden rounded-lg shadow-md">
-                <img
-                  src={val.cover}
-                  alt={`${category}${i}`}
-                  className="w-full h-60 object-cover filter blur-[1.2px] group-hover:blur-none transition duration-900"
-                />
-                <div
-                  className="absolute inset-0 flex items-center justify-center 
+          {gallery
+            .filter((item) => item.category_id === categoryId)
+            .map((val, i) => (
+              <Link key={i} href={`/services/${category}/${val.id}`}>
+                <div className="relative group overflow-hidden rounded-lg shadow-md">
+                  <img
+                    src={val.cover_image}
+                    alt={`${category}${i}`}
+                    className="w-full h-60 object-cover filter blur-[1.2px] group-hover:blur-none transition duration-900"
+                  />
+                  <div
+                    className="absolute inset-0 flex items-center justify-center
                    text-white text-lg font-semibold drop-shadow-md
-                   transition-all duration-900 
+                   transition-all duration-900
                    group-hover:translate-y-full"
-                >
-                  {val.title}
+                  >
+                    {val.title}
+                  </div>
                 </div>
-              </div>
-            </Link>
-          ))}
+              </Link>
+            ))}
         </div>
       </div>
     </div>
   );
-}
-
-{
-  /* <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4">
-          {images.map((img, i) => (
-            <div key={i} className="mb-4 break-inside-avoid">
-              <img
-                src={img}
-                alt={`${category}-${i}`}
-                className="w-full rounded-lg shadow-md object-contain"
-              />
-            </div>
-          ))}
-        </div> */
 }

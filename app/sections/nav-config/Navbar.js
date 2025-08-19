@@ -1,15 +1,28 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { FiMenu, FiX } from "react-icons/fi";
 import { navLinks } from "@/app/data/NavLinks";
 import { COLORS, MEDIA } from "@/app/utils";
+import { fetchLogo } from "@/app/data/HeroData";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-
+  const [url, setUrl] = useState(null);
+  useEffect(() => {
+    async function loadLogo() {
+      const heroUrl = await fetchLogo();
+      console.log("Fetched URL:", heroUrl);
+      if (heroUrl) {
+        setUrl(heroUrl);
+      } else {
+        console.log("SOMETHING WENT WRONG:", heroUrl);
+      }
+    }
+    loadLogo();
+  }, []);
   return (
     <nav
       className="w-full fixed top-0 left-0 z-50 px-6 md:px-16 py-4
@@ -39,13 +52,9 @@ export default function Navbar() {
       ) : (
         <div className="hidden md:flex justify-center">
           <Link href="/">
-            <Image
-              src={MEDIA.images.logo}
-              alt="Logo"
-              width={120}
-              height={50}
-              priority
-            />
+            {url && (
+              <Image src={url} alt="Logo" width={120} height={50} priority />
+            )}
           </Link>
         </div>
       )}

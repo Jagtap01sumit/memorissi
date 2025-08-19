@@ -2,22 +2,12 @@
 // import { ReactComponent as CommercialIcon } from "./icons/commercial.svg";
 // import { ReactComponent as BTSIcon } from "./icons/bts.svg";
 
-import { MEDIA } from "@/app/utils";
+import { getAllDataFromTable } from "@/lib/storage";
 
-export const servicesData = [
-  {
-    title: "Wedding",
-    image: MEDIA.serviceCard.img1,
-    // icon: <WeddingIcon />,
-  },
-  {
-    title: "Commercial",
-    image: MEDIA.serviceCard.img2,
-    // icon: <CommercialIcon />,
-  },
-  {
-    title: "BTS",
-    image: MEDIA.serviceCard.img3,
-    // icon: <BTSIcon />,
-  },
-];
+export async function servicesData() {
+  const { data } = await getAllDataFromTable(
+    process.env.NEXT_PUBLIC_CATEGORIES_TABLE
+  );
+  console.log(data, "category data");
+  return { data };
+}

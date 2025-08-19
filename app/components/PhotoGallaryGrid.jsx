@@ -10,17 +10,16 @@ export default function GalleryGrid({ gallery }) {
 
   return (
     <div className="p-6">
-      <h1 className="text-2xl font-bold mb-6">{gallery.title}</h1>
       <div className="columns-2 md:columns-4 gap-1 md:gap-2">
         {gallery.images.map((img, i) => (
           <div
             key={i}
             className=" mb-1 md:mb-2 break-inside-avoid"
-            onClick={() => setSelectedImage(img.src)}
+            onClick={() => setSelectedImage(img)}
           >
             <img
-              src={img.src}
-              alt={`${img.description}-${i}`}
+              src={img}
+              alt={`${i}`}
               className="w-full rounded-lg shadow-md object-contain"
             />
           </div>

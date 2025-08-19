@@ -17,11 +17,13 @@ export default function GalleryGrid({ gallery }) {
             className=" mb-1 md:mb-2 break-inside-avoid"
             onClick={() => setSelectedImage(img)}
           >
-            <img
-              src={img}
-              alt={`${i}`}
-              className="w-full rounded-lg shadow-md object-contain"
-            />
+            {img ? (
+              <img
+                src={img}
+                alt={`${i}`}
+                className="w-full rounded-lg shadow-md object-contain"
+              />
+            ) : null}
           </div>
         ))}
       </div>{" "}

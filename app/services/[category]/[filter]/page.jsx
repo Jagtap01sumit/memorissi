@@ -63,11 +63,13 @@ export default function Gallery({ params }) {
                 transition={{ duration: 0.8, delay: 0.4 }}
                 className="w-full flex justify-center mb-10 "
               >
-                <img
-                  src={val.images[2]}
-                  alt={val?.title || "Gallery Main Image"}
-                  className="w-full flex justify-center mb-10 px-6 "
-                />
+                {val ? (
+                  <img
+                    src={val.images[2]}
+                    alt={val?.title || "Gallery Main Image"}
+                    className="w-full flex justify-center mb-10 px-6 "
+                  />
+                ) : null}
               </motion.div>
             )}
 

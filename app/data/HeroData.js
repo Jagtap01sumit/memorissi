@@ -4,7 +4,7 @@ export async function fetchHeroImage() {
   try {
     const url = await getPublicUrl(
       process.env.NEXT_PUBLIC_MAIN_BUCKET,
-      `${process.env.NEXT_PUBLIC_FOLDER_FOR_HERO}Hero/hero.jpg`
+      `${process.env.NEXT_PUBLIC_FOLDER_FOR_HERO}/hero.jpg`
     );
     console.log(url);
     return url;
@@ -16,7 +16,8 @@ export async function fetchHeroImage() {
 export async function fetchLogo() {
   try {
     const url = await getPublicUrl(
-      `${process.env.NEXT_PUBLIC_FOLDER_FOR_HERO}Hero/logo.png}`
+      process.env.NEXT_PUBLIC_MAIN_BUCKET,
+      `${process.env.NEXT_PUBLIC_FOLDER_FOR_HERO}/logo.png`
     );
     console.log(url);
     return url;

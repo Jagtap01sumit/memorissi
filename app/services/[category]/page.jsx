@@ -54,11 +54,13 @@ export default function ServiceCategoryPage({ params }) {
             .map((val, i) => (
               <Link key={i} href={`/services/${category}/${val.id}`}>
                 <div className="relative group overflow-hidden rounded-lg shadow-md">
-                  <img
-                    src={val.cover_image}
-                    alt={`${category}${i}`}
-                    className="w-full h-60 object-cover filter blur-[1.2px] group-hover:blur-none transition duration-900"
-                  />
+                  {val ? (
+                    <img
+                      src={val.cover_image}
+                      alt={`${val}${i}`}
+                      className="w-full h-60 object-cover filter blur-[1.2px] group-hover:blur-none transition duration-900"
+                    />
+                  ) : null}
                   <div
                     className="absolute inset-0 flex items-center justify-center
                    text-white text-lg font-semibold drop-shadow-md

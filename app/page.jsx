@@ -12,7 +12,7 @@ export default function HeroSection() {
   useEffect(() => {
     async function loadSliderImages() {
       const urls = await fetchSliderImages();
-      setImages(urls);
+      setImages(urls || []);
     }
     loadSliderImages();
   }, []);

@@ -12,7 +12,6 @@ const ServicesSection = () => {
         console.error("Error fetching services:", error);
         setCategories([]);
       } else {
-        console.log("Fetched URL:", data);
         setCategories(data || []);
       }
     }
@@ -24,7 +23,7 @@ const ServicesSection = () => {
       style={{ backgroundColor: COLORS.background }}
     >
       <h5 className="text-sm text-gray-400">SERVICES</h5>
-      <h2 className="text-3xl font-serif mb-10">What I Offer</h2>
+      <h2 className="text-3xl font-serif mb-10">What We Offer</h2>
 
       <div className="flex flex-wrap justify-center gap-8">
         {categories.map((service, index) => (

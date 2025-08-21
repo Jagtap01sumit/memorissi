@@ -5,9 +5,11 @@
 import { getAllDataFromTable } from "@/lib/storage";
 
 export async function servicesData() {
-  const { data } = await getAllDataFromTable(
+  const { data, error } = await getAllDataFromTable(
     process.env.NEXT_PUBLIC_CATEGORIES_TABLE
   );
-  console.log(data, "category data");
+  if (error) {
+    console.log("ERROR:", error);
+  }
   return { data };
 }

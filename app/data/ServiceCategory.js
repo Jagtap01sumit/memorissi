@@ -1,4 +1,3 @@
-
 import { getAllDataFromTable, getTitleById, getIdByTitle } from "@/lib/storage";
 
 export async function getTitleByIdForCategory(id) {
@@ -10,7 +9,6 @@ export async function galleries() {
   const { data } = await getAllDataFromTable(
     process.env.NEXT_PUBLIC_GALLERIES_TABLE
   );
-  console.log(data, "gallary data");
   return { data };
 }
 

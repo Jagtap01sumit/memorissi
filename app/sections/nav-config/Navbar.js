@@ -18,7 +18,6 @@ export default function Navbar() {
       console.log("Fetched URL:", logoUrl);
       if (logoUrl) {
         setUrl(logoUrl);
-        console.log(url, "logurl");
       } else {
         console.log("SOMETHING WENT WRONG IN LOGOURL:", logoUrl);
       }
@@ -85,7 +84,7 @@ export default function Navbar() {
       {/* Mobile */}
       <div className="md:hidden col-span-3 flex w-full justify-between items-center">
         <Link href="/">
-          <Image src={url} alt="Logo" width={100} height={40} />
+          {url && <Image src={url} alt="Logo" width={100} height={40} />}
         </Link>
         <button onClick={() => setMenuOpen(!menuOpen)} className="text-white">
           {menuOpen ? <FiX size={24} /> : <FiMenu size={24} />}

@@ -6,7 +6,7 @@ export async function fetchHeroImage() {
       process.env.NEXT_PUBLIC_MAIN_BUCKET,
       `${process.env.NEXT_PUBLIC_FOLDER_FOR_HERO}/hero.jpg`
     );
-    console.log(url);
+
     return url;
   } catch (err) {
     console.error("Error fetching signed URL:", err.message);
@@ -19,7 +19,7 @@ export async function fetchLogo() {
       process.env.NEXT_PUBLIC_MAIN_BUCKET,
       `${process.env.NEXT_PUBLIC_FOLDER_FOR_HERO}/logo.png`
     );
-    console.log(url);
+
     return url;
   } catch (err) {
     console.error("Error fetching signed URL:", err.message);

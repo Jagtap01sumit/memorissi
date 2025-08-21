@@ -4,7 +4,7 @@ const ServiceCard = ({ title, image, icon }) => {
   const slug = title.toLowerCase();
   return (
     <Link href={`/services/${slug}`}>
-      <div className="relative w-64 h-80 overflow-hidden rounded-lg shadow-lg cursor-pointer group">
+      <div className="relative h-40 md:w-64 md:h-80 overflow-hidden rounded-lg shadow-lg cursor-pointer group">
         {image ? (
           <img
             src={image}
@@ -15,7 +15,7 @@ const ServiceCard = ({ title, image, icon }) => {
 
         <div className="absolute inset-0 bg-[#2A2139]/70 transition-all duration-500 group-hover:bg-transparent ">
           <div className="mb-2">{icon}</div>
-          <h3 className="text-xl font-serif">{title}</h3>
+          <h3 className=" text-sm md:text-xl font-serif">{title}</h3>
         </div>
       </div>
     </Link>

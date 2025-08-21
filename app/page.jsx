@@ -6,6 +6,7 @@ import { HomeIntro, ServicesSection } from "./sections";
 import ImageSlider from "@/app/components/ImageSlider";
 import { useEffect, useState } from "react";
 import { fetchSliderImages } from "@/app/data/SliderData";
+import { FeaturedStory, ClientTestimonials } from "@/app/sections";
 export default function HeroSection() {
   const [images, setImages] = useState([]);
 
@@ -25,6 +26,8 @@ export default function HeroSection() {
       <HomeIntro />
       <ImageSlider images={images} />
       <ServicesSection />
+      {/* <FeaturedStory /> */}
+      <ClientTestimonials />
       <Footer />
     </div>
   );

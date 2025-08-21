@@ -7,7 +7,6 @@ export async function fetchSliderImages() {
       process.env.NEXT_PUBLIC_FOLDER_FOR_SLIDER
     );
 
-    console.log("Fetched slider images:", images);
     return images;
   } catch (err) {
     console.error("Error fetching slider images:", err.message);

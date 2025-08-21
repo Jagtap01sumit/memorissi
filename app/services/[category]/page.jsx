@@ -19,7 +19,6 @@ export default function ServiceCategoryPage({ params }) {
         console.error("Error fetching galleries:", error);
         setGallery([]);
       } else {
-        console.log("Fetched galleries:", data);
         setGallery(data || []);
       }
     }

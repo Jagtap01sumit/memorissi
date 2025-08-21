@@ -16,10 +16,9 @@ export default function Gallery({ params }) {
     async function loadGalleries() {
       const { data, error } = await galleries();
       if (error) {
-        console.error("Error fetching galleries:", error);
+        console.error("Error when trying to fetch gallery:", error);
         setGallery([]);
       } else {
-        console.log("Fetched galleries:", data);
         setGallery(data || []);
       }
     }
@@ -65,7 +64,7 @@ export default function Gallery({ params }) {
               >
                 {val ? (
                   <img
-                    src={val.images[2]}
+                    src={val.images[0]}
                     alt={val?.title || "Gallery Main Image"}
                     className="w-full flex justify-center mb-10 px-6 "
                   />

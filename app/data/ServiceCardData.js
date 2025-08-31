@@ -1,15 +1,24 @@
-// import { ReactComponent as WeddingIcon } from "./icons/wedding.svg";
-// import { ReactComponent as CommercialIcon } from "./icons/commercial.svg";
-// import { ReactComponent as BTSIcon } from "./icons/bts.svg";
+import { client } from "@/lib/sanityClient";
 
-import { getAllDataFromTable } from "@/lib/storage";
+
+const serviceCategoriesQuery = `*[_type == "services"]{
+   _id,
+  title,
+  "cover_photo": bgImage.asset->url,
+  "logo": logo.asset->url
+}`;
 
 export async function servicesData() {
-  const { data, error } = await getAllDataFromTable(
-    process.env.NEXT_PUBLIC_CATEGORIES_TABLE
-  );
-  if (error) {
-    console.log("ERROR:", error);
+  try {
+    const servicesCategories = await client.fetch(serviceCategoriesQuery);
+    return servicesCategories.map((service) => ({
+      id: service._id,
+      category_name: service.title,
+      cover_photo: service.cover_photo,
+      logo: service.logo,
+    }));
+  } catch (err) {
+    console.error("Error fetching services:", err.message);
+    return [];
   }
-  return { data };
 }

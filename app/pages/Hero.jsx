@@ -1,27 +1,25 @@
 "use client";
 
 import { Navbar } from "@/app/sections";
-import { supabase } from "@/lib/supabaseClient";
 import { COLORS } from "@/app/utils";
 import { useEffect, useState } from "react";
-import { fetchHeroImage } from "@/app/data/HeroData";
+import { fetchHero } from "@/app/data/HeroData";
 
 export default function Hero() {
   const [url, setUrl] = useState(null);
-
+  const [data, setData] = useState([]);
   useEffect(() => {
     async function loadHero() {
-      const heroUrl = await fetchHeroImage();
-      console.log("Fetched URL:", heroUrl);
-      if (heroUrl) {
-        setUrl(heroUrl);
+      const urls = await fetchHero();
+      if (urls) {
+        setUrl(urls.heroImage.url);
+        setData(urls);
       } else {
-        console.log("SOMETHING WENT WRONG:", heroUrl);
+        console.log("SOMETHING WENT WRONG:", urls);
       }
     }
     loadHero();
   }, []);
-
   return (
     <div
       className="relative w-full h-[60vh] md:h-[80vh] lg:min-h-screen bg-no-repeat bg-center bg-cover px-2"
@@ -36,10 +34,10 @@ export default function Hero() {
         style={{ color: COLORS.textPrimary }}
       >
         <h1 className="text-4xl md:text-6xl font-bold drop-shadow-lg">
-          Capture Your Best Moments
+          {data?.title}
         </h1>
         <p className="mt-4 text-lg md:text-2xl max-w-2xl drop-shadow">
-          We specialize in wedding, commercial, and creative photography.
+          {data?.paragraph}
         </p>
       </div>
     </div>

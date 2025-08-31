@@ -1,28 +1,54 @@
-import { getPublicUrl } from "@/lib/storage";
+import { client } from "@/lib/sanityClient";
 
-export async function fetchHeroImage() {
+const heroQuery = `*[_type == "hero"]{
+  _id,
+  Home_Intro_Para,
+  Home_Intro_Title,
+  Paragraph,
+  Title,
+  logo,
+heroImage->{
+    name,
+    "url": image.asset->url
+  }
+}`;
+export async function fetchHero() {
   try {
-    const url = await getPublicUrl(
-      process.env.NEXT_PUBLIC_MAIN_BUCKET,
-      `${process.env.NEXT_PUBLIC_FOLDER_FOR_HERO}/hero.jpg`
-    );
+    const heroData = await client.fetch(heroQuery);
 
-    return url;
+    if (!heroData || heroData.length === 0) return null;
+
+    const hero = heroData[0];
+
+    return {
+      id: hero._id,
+      title: hero.Title,
+      introTitle: hero.Home_Intro_Title,
+      introPara: hero.Home_Intro_Para,
+      paragraph: hero.Paragraph,
+      heroImage: hero.heroImage,
+    };
   } catch (err) {
-    console.error("Error fetching signed URL:", err.message);
+    console.error("Error fetching hero data:", err.message);
     return null;
   }
 }
+
+const logoQuery = `*[_type == "hero"]{
+  "url": logo.asset->url
+}`;
+
 export async function fetchLogo() {
   try {
-    const url = await getPublicUrl(
-      process.env.NEXT_PUBLIC_MAIN_BUCKET,
-      `${process.env.NEXT_PUBLIC_FOLDER_FOR_HERO}/logo.png`
-    );
+    const heroData = await client.fetch(logoQuery);
 
-    return url;
+    if (!heroData || heroData.length === 0) return null;
+    console.log(heroData.url, "logo data");
+    return {
+      url: heroData[0].url,
+    };
   } catch (err) {
-    console.error("Error fetching signed URL:", err.message);
+    console.error("Error fetching hero data:", err.message);
     return null;
   }
 }

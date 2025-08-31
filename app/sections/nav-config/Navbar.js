@@ -6,18 +6,18 @@ import Image from "next/image";
 import { FiMenu, FiX } from "react-icons/fi";
 import { navLinks } from "@/app/data/NavLinks";
 import { COLORS } from "@/app/utils";
-import { fetchLogo } from "@/app/data/HeroData";
+import { fetchHero, fetchLogo } from "@/app/data/HeroData";
 
-export default function Navbar() {
+export default function Navbar({ blogs }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [url, setUrl] = useState(null);
-
+  console.log(blogs, "this is blogs");
   useEffect(() => {
     async function loadLogo() {
       const logoUrl = await fetchLogo();
       console.log("Fetched URL:", logoUrl);
       if (logoUrl) {
-        setUrl(logoUrl);
+        setUrl(logoUrl.url);
       } else {
         console.log("SOMETHING WENT WRONG IN LOGOURL:", logoUrl);
       }
@@ -25,6 +25,17 @@ export default function Navbar() {
     loadLogo();
   }, []);
 
+  useEffect(() => {
+    const res = fetchHero();
+    res
+      .then((data) => {
+        console.log(data, "this is res");
+      })
+      .catch((e) => {
+        console.log(e, "errorr");
+      });
+  }, []);
+  console.log(fetchHero() + "fetchhero image");
   return (
     <nav
       className="w-full fixed top-0 left-0 z-50 px-6 md:px-16 py-4

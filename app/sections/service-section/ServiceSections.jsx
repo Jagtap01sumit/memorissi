@@ -7,12 +7,11 @@ const ServicesSection = () => {
   const [categories, setCategories] = useState([]);
   useEffect(() => {
     async function loadServices() {
-      const { data, error } = await servicesData();
-      if (error) {
-        console.error("Error fetching services:", error);
-        setCategories([]);
-      } else {
+      const data = await servicesData();
+      if (data) {
         setCategories(data || []);
+      } else {
+        console.log("SOMETHING WENT WRONG", data);
       }
     }
     loadServices();
@@ -31,6 +30,8 @@ const ServicesSection = () => {
             key={index}
             title={service.category_name}
             image={service.cover_photo}
+            logo={service.logo}
+            id={service.id}
           />
         ))}
       </div>

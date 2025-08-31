@@ -1,10 +1,8 @@
-// app/components/ImageSlider.jsx
-"use client";
-
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Image from "next/image";
+import { urlFor } from "../../lib/sanityClient";
 
 export default function ImageSlider({ images }) {
   const settings = {
@@ -17,6 +15,9 @@ export default function ImageSlider({ images }) {
     cssEase: "linear", // smooth flow
     slidesToShow: 1.5, // number of images visible at once
     slidesToScroll: 1,
+    swipe: true,
+    touchMove: true,
+    draggable: true,
     pauseOnHover: false,
     responsive: [
       {
@@ -43,16 +44,25 @@ export default function ImageSlider({ images }) {
   return (
     <div className="w-full mx-auto">
       <Slider {...settings}>
-        {images.map((src, idx) => (
-          <div key={idx} className="relative w-full h-40 md:h-60 lg:h-72">
-            <Image
-              src={src}
-              alt={`Slide ${idx}`}
-              fill
-              className="object-cover rounded-xl px-2"
-            />
-          </div>
-        ))}
+        {images?.length > 0 ? (
+          images.map((src, idx) => (
+            <div
+              key={src._id || idx}
+              className="relative w-full aspect-[16/9] md:aspect-[3/2] lg:aspect-[21/9]"
+            >
+              <Image
+                src={src.image}
+                alt={src.name || `Slide ${idx}`}
+                fill
+                priority={idx === 0}
+                loading={idx === 0 ? "eager" : "lazy"}
+                className="object-cover rounded-xl px-2"
+              />
+            </div>
+          ))
+        ) : (
+          <p className="text-center text-gray-400">No images available</p>
+        )}
       </Slider>
     </div>
   );

@@ -16,8 +16,11 @@ export default function Footer() {
 
   return (
     <footer
-      className=" py-8"
-      style={{ backgroundColor: COLORS.background, text: COLORS.textPrimary }}
+      className="p-8"
+      style={{
+        backgroundColor: COLORS.cardBackground,
+        text: COLORS.textPrimary,
+      }}
     >
       <div className="container mx-auto flex flex-col items-center">
         {/* Links */}

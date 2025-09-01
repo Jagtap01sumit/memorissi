@@ -1,5 +1,5 @@
 import { Star } from "lucide-react";
-
+import { COLORS } from "@/app/utils";
 export default function ReviewCard({
   name,
   review,
@@ -9,7 +9,13 @@ export default function ReviewCard({
   link,
 }) {
   return (
-    <div className="bg-gray-50 rounded-2xl shadow-md md:p-6 p-2 max-w-sm">
+    <div
+      className=" rounded-2xl shadow-md md:p-6 p-2 max-w-sm"
+      style={{
+        backgroundColor: COLORS.cardBackground,
+        text: COLORS.textPrimary,
+      }}
+    >
       {image && (
         <div className="md:mb-4 mb-1">
           <img
@@ -20,7 +26,10 @@ export default function ReviewCard({
         </div>
       )}
 
-      <h3 className="md:text-xl text-[8px] font-semibold md:mb-2 mb-1">
+      <h3
+        className="md:text-xl text-[8px] font-semibold md:mb-2 mb-1"
+        style={{ text: COLORS.textSecondary }}
+      >
         {title}
       </h3>
 
@@ -35,9 +44,19 @@ export default function ReviewCard({
         ))}
       </div>
 
-      <p className="text-gray-700 md:mb-3 text-[7px]">{review}</p>
+      <p
+        className=" md:mb-3 md:text-sm text-[7px]"
+        style={{ text: COLORS.textPrimary }}
+      >
+        {review}
+      </p>
 
-      <p className="md:font-medium text-gray-900 text-[6px]">{name}</p>
+      <p
+        className="md:font-medium md:text-xs text-[6px]"
+        style={{ text: COLORS.accent }}
+      >
+        {name}
+      </p>
 
       {link && (
         <a

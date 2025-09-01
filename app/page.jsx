@@ -2,7 +2,7 @@
 import { COLORS } from "@/app/utils";
 import Hero from "@/app/pages/Hero";
 import Footer from "@/app/components/Footer";
-import { HomeIntro, ServicesSection } from "./sections";
+import { EmailSection, HomeIntro, ServicesSection } from "./sections";
 import ImageSlider from "@/app/components/ImageSlider";
 import { useEffect, useState } from "react";
 import { fetchSliderImages } from "@/app/data/SliderData";
@@ -19,7 +19,7 @@ export default function HeroSection() {
   }, []);
   return (
     <div
-      className="px-2 md:px-4"
+      className="px-2 pb-2 md:pb-4 md:px-4"
       style={{ backgroundColor: COLORS.background }}
     >
       <Hero />
@@ -28,6 +28,7 @@ export default function HeroSection() {
       <ServicesSection />
       {/* <FeaturedStory /> */}
       <ClientTestimonials />
+      <EmailSection />
       <Footer />
     </div>
   );

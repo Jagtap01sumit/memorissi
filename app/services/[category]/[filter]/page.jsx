@@ -15,7 +15,7 @@ export default function Gallery({ params }) {
   useEffect(() => {
     async function loadGalleries() {
       const data = await getGrids(filter);
-      console.log(data, "grid");
+
       if (data) {
         setGallery(data || []);
       }

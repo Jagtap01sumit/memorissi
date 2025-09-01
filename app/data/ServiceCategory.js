@@ -1,10 +1,19 @@
-import { getTitleById, getIdByTitle } from "@/lib/storage";
 import { client } from "@/lib/sanityClient";
-export async function getTitleByIdForCategory(id) {
-  const { data, error } = await getTitleById(id);
-  console.log(data, error, "get title");
-  return data.category_name;
-}
+
+const serviceCategoriesQuery = `*[_type == "gallerycards"]{
+  _id,
+  title,
+  "cover_photo": bgImage.asset->url,
+  eventDate,
+  category->{
+    title,
+    _id
+  },
+  "galleryImages": galleryImages[]{
+    "url": asset->url,
+    "alt": asset->altText
+  }
+}`;
 export async function galleries(categoryId) {
   const galleriesData = await client.fetch(serviceCategoriesQuery);
 
@@ -23,28 +32,6 @@ export async function galleries(categoryId) {
   }));
 }
 
-export async function getIdFromTitle(title) {
-  const { data, error } = await getIdByTitle(title);
-  if (error) {
-    console.log(error, "getIdByTitle");
-  }
-  return { data };
-}
-
-const serviceCategoriesQuery = `*[_type == "gallerycards"]{
-  _id,
-  title,
-  "cover_photo": bgImage.asset->url,
-  eventDate,
-  category->{
-    title,
-    _id
-  },
-  "galleryImages": galleryImages[]{
-    "url": asset->url,
-    "alt": asset->altText
-  }
-}`;
 const queryFilter = `*[_type == "gallerycards" && _id == $filterId]{
   _id,
   title,

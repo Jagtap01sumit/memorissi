@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import ReviewCard from "./ReviewCard";
 import FullReviewCard from "./FullReviewCard";
-
+import { COLORS } from "@/app/utils";
 const reviews = [
   {
     name: "Ankush S.",
@@ -84,25 +84,30 @@ export default function ReviewCarousel() {
   }, []);
 
   const prevCard = () => {
-    setIndex((prev) => (prev - 1 + reviews.length) % reviews.length);
+    setIndex((prev) => (prev - 3 + reviews.length) % reviews.length);
   };
 
   const nextCard = () => {
-    setIndex((prev) => (prev + 1) % reviews.length);
+    setIndex((prev) => (prev + 3) % reviews.length);
   };
 
   const visible = [
+    (index - 2 + reviews.length) % reviews.length,
     (index - 1 + reviews.length) % reviews.length,
     index,
     (index + 1) % reviews.length,
+    (index + 2) % reviews.length,
   ];
 
   return (
-    <div className="relative flex justify-center items-center overflow-hidden md:p-8 w-full">
+    <div className="relative flex justify-center items-center overflow-hidden md:p-8 p-6 w-full">
       {/* Left Button */}
       <button
         onClick={prevCard}
-        className="absolute left-2 z-10 bg-white shadow-md rounded-full p-2 hover:bg-gray-100"
+        className="absolute left-2 z-10 shadow-md rounded-full p-2 "
+        style={{
+          backgroundColor: COLORS.accent,
+        }}
       >
         <ChevronLeft size={20} />
       </button>
@@ -111,13 +116,25 @@ export default function ReviewCarousel() {
       <div className="flex gap-3 sm:gap-6">
         {visible.map((i) => {
           const isCenter = i === index;
+          const leftCenter = i === index - 2;
+          const beforeCenter = i === index + 2;
+
+          // compute scale + opacity only once
+          let scale = 0.85;
+          let opacity = 0.6;
+
+          if (isCenter) {
+            scale = 1.1;
+            opacity = 1;
+          } else if (leftCenter || beforeCenter) {
+            scale = 0.65;
+            opacity = 0.4;
+          }
+
           return (
             <motion.div
               key={i}
-              animate={{
-                scale: isCenter ? 1.1 : 0.85,
-                opacity: isCenter ? 1 : 0.6,
-              }}
+              animate={{ scale, opacity }}
               transition={{ duration: 0.6 }}
               className="w-28 sm:w-48 md:w-64 lg:w-72 cursor-pointer flex-shrink-0"
               onClick={() => setSelectedCard(i)}
@@ -132,6 +149,9 @@ export default function ReviewCarousel() {
       <button
         onClick={nextCard}
         className="absolute right-2 z-10 bg-white shadow-md rounded-full p-2 hover:bg-gray-100"
+        style={{
+          backgroundColor: COLORS.accent,
+        }}
       >
         <ChevronRight size={20} />
       </button>

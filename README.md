@@ -18,9 +18,32 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-
 # ✅ TODOs
+
 - [ ] Add more colors for { primarytexthover, secondarytexthover}
-- [ ] Add dark/light mode toggle for 404 + footer.  
-- [ ] Add subtle animations (fade-in, hover effects).  
- 
+- [ ] Add dark/light mode toggle for 404 + footer.
+- [ ] Add subtle animations (fade-in, hover effects).
+
+## Email setupParsing ecmascript source code failed
+
+1️⃣ Enable 2-Step Verification
+
+Go to Google Account Security
+.
+
+Enable 2-Step Verification (if not already enabled).
+
+2️⃣ Create an App Password
+
+Go to App Passwords
+.
+
+Under Select app, choose Mail.
+
+Under Select device, choose Other and name it e.g., Next.js Contact Form.
+
+Click Generate.
+
+You’ll get a 16-character password.
+
+###

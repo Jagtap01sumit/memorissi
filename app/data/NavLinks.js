@@ -1,12 +1,12 @@
 export const navLinks = {
   leftLinks: [
     { label: "Home", href: "/" },
-    { label: "About", href: "/about" },
+    { label: "About", href: "/about-us" },
     { label: "Services", href: "/services" },
   ],
   rightLinks: [
-    { label: "Portfolio", href: "/portfolio" },
-    { label: "Blog", href: "/blog" },
+    { label: "Wedding", href: "/wedding" },
+    { label: "BTS", href: "/bts" },
     { label: "Contact", href: "/contact" },
   ],
 };

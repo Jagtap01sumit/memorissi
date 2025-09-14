@@ -7,7 +7,7 @@ export default function Services() {
     <div>
       {" "}
       <div className="mx-2">
-        <Hero />
+        <Hero slug={"/"} />
         <EmailSection />
         <Footer />
       </div>

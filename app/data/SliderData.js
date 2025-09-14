@@ -1,25 +1,23 @@
 import { client } from "@/lib/sanityClient";
 import { urlFor } from "@/lib/sanityClient";
 
-const sliderImagesQuery = `*[_type == "sliderimages"]{
-  _id,
-  name,
-  image
-}`;
-
-export async function fetchSliderImages() {
+export async function fetchSliderImages(slug) {
   try {
-    const images = await client.fetch(sliderImagesQuery);
+    const query = `*[_type == "page" && slug.current == $slug][0]{
+      sliderImages[]{
+        asset
+      }
+    }`;
 
-    const mapped = images.map((img) => ({
-      ...img,
-      image: img.image
-        ? urlFor(img.image).width(1200).auto("format").url()
-        : null,
-    }));
+    const data = await client.fetch(query, { slug });
+    if (!data?.sliderImages) return [];
 
-    console.log(mapped, "resolved slider images");
-    return mapped;
+    const imagesArray = data.sliderImages.map((img) =>
+      img?.asset ? urlFor(img.asset).width(1200).auto("format").url() : null
+    );
+
+    console.log(imagesArray, "resolved slider images");
+    return imagesArray;
   } catch (err) {
     console.error("Error fetching slider images:", err.message);
     return [];

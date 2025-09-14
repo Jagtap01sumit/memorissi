@@ -7,8 +7,8 @@ export default function Services() {
     <div>
       {" "}
       <div className="mx-2">
-        <Hero />
-        <ServicesSection />
+        <Hero slug={"/"} />
+        <ServicesSection slug={"/"} />
         <Footer />
       </div>
     </div>

@@ -3,11 +3,16 @@ import React, { useEffect, useState } from "react";
 import ServiceCard from "@/app/components/ServiceCard";
 import { COLORS } from "@/app/utils";
 import { servicesData } from "@/app/data/ServiceCardData";
-const ServicesSection = () => {
+const ServicesSection = ({ slug }) => {
   const [categories, setCategories] = useState([]);
   useEffect(() => {
     async function loadServices() {
-      const data = await servicesData();
+      if (!slug) {
+        console.log("slug is not provided");
+      }
+      const data = await servicesData(slug);
+      console.log(data, "ser data");
+      console.log(slug, "slug");
       if (data) {
         setCategories(data || []);
       } else {

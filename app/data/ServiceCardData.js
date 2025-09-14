@@ -1,24 +1,34 @@
 import { client } from "@/lib/sanityClient";
 
-
-const serviceCategoriesQuery = `*[_type == "services"]{
-   _id,
-  title,
-  "cover_photo": bgImage.asset->url,
-  "logo": logo.asset->url
+export async function servicesData(slug) {
+  try {
+    const query = `*[_type == "page" && slug.current == $slug][0]{
+  services[]->{
+    _id,
+    title,
+    "cover_photo": bgImage.asset->url,
+    "logo": logo.asset->url
+  }
 }`;
 
-export async function servicesData() {
-  try {
-    const servicesCategories = await client.fetch(serviceCategoriesQuery);
-    return servicesCategories.map((service) => ({
+    if (!slug) throw new Error("slug is required");
+    console.log(slug, "card slug");
+
+    const data = await client.fetch(query, { slug });
+
+    console.log(data, "category data ");
+
+    if (!data || !data.services) {
+      return [];
+    }
+    return data.services.map((service) => ({
       id: service._id,
       category_name: service.title,
       cover_photo: service.cover_photo,
       logo: service.logo,
     }));
   } catch (err) {
-    console.error("Error fetching services:", err.message);
+    console.error("Error fetching category services:", err.message);
     return [];
   }
 }

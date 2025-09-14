@@ -1,14 +1,14 @@
 "use client";
 
 import React from "react";
-import Hero from "../app/pages/Hero";
-import { COLORS } from "../app/utils";
+import Hero from "./pages/Hero";
+import { COLORS } from "./utils";
 import Link from "next/link";
 import Footer from "./components/Footer";
 export default function NotFound() {
   return (
     <div className="mx-2">
-      <Hero />
+      <Hero imgUrl="/images/image.png" />
 
       <div
         className="flex flex-col min-h-screen justify-between "

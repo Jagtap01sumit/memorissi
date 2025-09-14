@@ -1,4 +1,5 @@
 import { client } from "@/lib/sanityClient";
+import { notFound } from "next/navigation";
 
 const heroQuery = `*[_type == "hero"]{
   _id,
@@ -12,43 +13,50 @@ heroImage->{
     "url": image.asset->url
   }
 }`;
-export async function fetchHero() {
+export async function fetchHeroBySlug(slug) {
   try {
-    const heroData = await client.fetch(heroQuery);
+    if (!slug) {
+      return;
+    }
+    const query = `
+      *[_type == "page" && slug.current == $slug][0]{
+        title,
+        "heroImage": hero.image.asset->url,
+        "heroHeading": hero.heading,
+        "heroParagraph": hero.paragraph,
+        "heroIntroTitle": hero.introTitle,
+        "heroIntroPara": hero.introPara
+      }
+    `;
+    console.log(slug, "fetchherodataslug");
+    const data = await client.fetch(query, { slug });
 
-    if (!heroData || heroData.length === 0) return null;
-
-    const hero = heroData[0];
-
-    return {
-      id: hero._id,
-      title: hero.Title,
-      introTitle: hero.Home_Intro_Title,
-      introPara: hero.Home_Intro_Para,
-      paragraph: hero.Paragraph,
-      heroImage: hero.heroImage,
-    };
-  } catch (err) {
-    console.error("Error fetching hero data:", err.message);
+    console.log(data, "hero data");
+    return data;
+  } catch (error) {
+    console.error("Error fetching hero:", error);
     return null;
   }
 }
 
-const logoQuery = `*[_type == "hero"]{
-  "url": logo.asset->url
+const navbarQuery = `*[_type == "navbar"][0]{
+  leftLinks,
+  "logo": logo.asset->url,
+  rightLinks
 }`;
-
-export async function fetchLogo() {
+export async function fetchNavbar() {
   try {
-    const heroData = await client.fetch(logoQuery);
+    const navbarData = await client.fetch(navbarQuery);
 
-    if (!heroData || heroData.length === 0) return null;
-    console.log(heroData.url, "logo data");
+    if (!navbarData) return null;
+
     return {
-      url: heroData[0].url,
+      logo: navbarData.logo,
+      leftLinks: navbarData.leftLinks || [],
+      rightLinks: navbarData.rightLinks || [],
     };
   } catch (err) {
-    console.error("Error fetching hero data:", err.message);
+    console.error("Error fetching navbar data:", err.message);
     return null;
   }
 }

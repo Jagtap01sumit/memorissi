@@ -3,23 +3,34 @@
 import { Navbar } from "@/app/sections";
 import { COLORS } from "@/app/utils";
 import { useEffect, useState } from "react";
-import { fetchHero } from "@/app/data/HeroData";
+import { fetchHeroBySlug } from "@/app/data/HeroData";
 
-export default function Hero() {
+export default function Hero({ slug, imgUrl }) {
   const [url, setUrl] = useState(null);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(null);
+
   useEffect(() => {
     async function loadHero() {
-      const urls = await fetchHero();
-      if (urls) {
-        setUrl(urls.heroImage.url);
-        setData(urls);
-      } else {
-        console.log("SOMETHING WENT WRONG:", urls);
+      if (imgUrl) {
+        setUrl(imgUrl);
+        return;
+      }
+
+      if (slug) {
+        const urls = await fetchHeroBySlug(slug);
+        if (urls && !imgUrl) {
+          setUrl(urls.heroImage);
+          setData(urls);
+        } else {
+          console.log("SOMETHING WENT WRONG:", urls);
+        }
       }
     }
     loadHero();
-  }, []);
+  }, [slug, imgUrl]);
+
+  if (!url && !data) return null;
+
   return (
     <div
       className="relative w-full h-[60vh] md:h-[80vh] lg:min-h-screen bg-no-repeat bg-center bg-cover px-2"
@@ -34,10 +45,10 @@ export default function Hero() {
         style={{ color: COLORS.textPrimary }}
       >
         <h1 className="text-4xl md:text-6xl font-bold drop-shadow-lg">
-          {data?.title}
+          {data?.heroHeading}
         </h1>
         <p className="mt-4 text-lg md:text-2xl max-w-2xl drop-shadow">
-          {data?.paragraph}
+          {data?.heroIntroPara}
         </p>
       </div>
     </div>

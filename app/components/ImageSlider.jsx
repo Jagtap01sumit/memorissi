@@ -1,10 +1,23 @@
+"use client";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Image from "next/image";
 import { urlFor } from "../../lib/sanityClient";
+import { useScroll } from "framer-motion";
+import { useEffect, useState } from "react";
+import { fetchSliderImages } from "../data/SliderData";
 
 export default function ImageSlider({ images }) {
+  // const [images, setImages] = useState([]);
+  // useEffect(() => {
+  //   async function loadSliderImages() {
+  //     const urls = await fetchSliderImages();
+  //     setImages(urls || []);
+  //   }
+  //   loadSliderImages();
+  // }, []);
+
   const settings = {
     dots: false,
     arrows: false,
@@ -51,8 +64,8 @@ export default function ImageSlider({ images }) {
               className="relative w-full aspect-[16/9] md:aspect-[3/2] lg:aspect-[21/9]"
             >
               <Image
-                src={src.image}
-                alt={src.name || `Slide ${idx}`}
+                src={src}
+                alt={src || `Slide ${idx}`}
                 fill
                 priority={idx === 0}
                 loading={idx === 0 ? "eager" : "lazy"}

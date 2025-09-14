@@ -22,28 +22,7 @@ export default function FaqAccordion() {
   console.log(FAQ, "faqdata");
 
   if (!FAQ) return <p className="text-center text-gray-400">Loading...</p>;
-  // const FAQ_DATA = [
-  //   {
-  //     question: "What types of shoots do you offer?",
-  //     answer:
-  //       "We provide wedding shoots, commercial product shoots, fashion/model photography, and branded Instagram reels — fully tailored to your vision.",
-  //   },
-  //   {
-  //     question: "How do I book a shoot?",
-  //     answer:
-  //       "You can book directly via our 'Book a Shoot' form or contact us via WhatsApp. We’ll get back to you within 24 hours.",
-  //   },
-  //   {
-  //     question: "Do you manage social media too?",
-  //     answer:
-  //       "Yes! We offer full social media management — including posts, reels, captions, hashtag strategy, and analytics.",
-  //   },
-  //   {
-  //     question: "How soon will I receive final edits?",
-  //     answer:
-  //       "We deliver photo galleries and edited reels within 7–10 business days, depending on your package.",
-  //   },
-  // ];
+
   return (
     <section
       className="max-w-3xl mx-auto py-12"

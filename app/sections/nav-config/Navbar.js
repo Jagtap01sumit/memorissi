@@ -29,7 +29,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className="w-full fixed top-0 left-0 z-50 px-6 md:px-16 py-4
+      className="w-full fixed top-0 left-0 z-50 px-6 md:px-16 
                  grid grid-cols-3 items-center
                  bg-white/10 backdrop-blur-md border-b border-white/20"
       style={{ backgroundColor: `${COLORS.background}99` }}

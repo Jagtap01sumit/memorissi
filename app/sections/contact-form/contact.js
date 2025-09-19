@@ -55,87 +55,91 @@ export default function EmailSection() {
     }
   };
 
-  if (!aboutData) return null; // optional: loading state
+  if (!aboutData) return null;
 
   return (
-    <section
-      className="grid md:grid-cols-2 my-12 py-24 gap-8 relative p-6 overflow-hidden"
-      id="contactSection"
-      style={{ color: COLORS.textPrimary }}
-    >
-      {/* Glowing background */}
-      <div className="absolute -top-10 -left-10 h-96 w-96 rounded-full bg-[radial-gradient(circle_at_center,_#A259FF,_transparent)] blur-3xl opacity-70 z-0"></div>
+    <section className="my-12">
+      {" "}
+      <h5 className="text-sm text-gray-400 text-center">CONTACT US</h5>
+      <h1 className="text-3xl font-serif text-center mb-5">
+        Let&apos;s Work Together
+      </h1>
+      <div
+        className="grid md:grid-cols-2  py-8 gap-8 relative p-6 overflow-hidden"
+        id="contactSection"
+        style={{ color: COLORS.textPrimary }}
+      >
+        <div className="absolute -top-10 -left-10 h-96 w-96 rounded-full bg-[radial-gradient(circle_at_center,_#A259FF,_transparent)] blur-3xl opacity-70 z-0"></div>
 
-      <div className="z-20 relative flex flex-col items-center justify-center">
-        <h5 className="text-xl font-bold text-white my-2">
-          Let&apos;s Work Together
-        </h5>
-        <p className="text-[#ADB7BE] mb-4 max-w-md">
-          I&apos;m currently looking for new opportunities. My inbox is always
-          open. Whether you have a question or just want to say hi, I&apos;ll
-          try my best to get back to you!
-        </p>
-        <div className="socials text-3xl flex flex-row gap-2">
-          <Link href="https://github.com/jagtap01sumit">
-            <FaGithubSquare />
-          </Link>
-          {/* <Link href="https://www.linkedin.com/in/sumit-jagtap-577a77241/">
-            <FaLinkedin />
-          </Link> */}
-          <Link href="https://www.instagram.com/jagtap__sumit/">
-            <FaInstagram />
-          </Link>
+        <div className="z-20 relative flex flex-col items-center justify-center">
+          <h6 className="text-xl font-bold text-white my-2">
+            Let’s Create Something Beautiful Together
+          </h6>
+          <p className="text-[#ADB7BE] text-justify text-gray-300 leading-relaxed tracking-wide indent-8">
+            We are always open to new projects, collaborations, and creative
+            opportunities. Whether you’re planning a wedding, a commercial
+            shoot, model portfolio, or simply want to capture timeless moments,
+            I’d love to hear from you.
+          </p>
+          <div className="socials text-3xl flex flex-row gap-2">
+            <Link href="https://github.com/jagtap01sumit">
+              <FaGithubSquare />
+            </Link>
+
+            <Link href="https://www.instagram.com/memoressa.media/">
+              <FaInstagram />
+            </Link>
+          </div>
         </div>
-      </div>
 
-      {/* Contact Form */}
-      <div className="relative z-10">
-        <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-          <input
-            type="text"
-            name="name"
-            placeholder="Your Name"
-            required
-            className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 rounded-lg p-3 w-full"
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Your Email"
-            required
-            className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 rounded-lg p-3 w-full"
-          />
-          <input
-            type="text"
-            name="subject"
-            placeholder="Subject"
-            required
-            className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 rounded-lg p-3 w-full"
-          />
-          <textarea
-            name="message"
-            placeholder="Your Message"
-            rows={5}
-            required
-            className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 rounded-lg p-3 w-full"
-          />
-          <button
-            type="submit"
-            disabled={loading}
-            className="  font-semibold py-2.5 px-5 rounded-lg w-full transition"
-            style={{
-              backgroundColor: COLORS.cardBackground,
-              text: COLORS.textPrimary,
-            }}
-          >
-            {loading ? "Sending..." : "Send Message"}
-          </button>
-          {emailSubmitted && (
-            <p className="text-green-500 mt-2 text-sm">
-              Email sent successfully!
-            </p>
-          )}
-        </form>
+        <div className="relative z-10">
+          <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+            <input
+              type="text"
+              name="name"
+              placeholder="Your Name"
+              required
+              className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 rounded-lg p-3 w-full"
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Your Email"
+              required
+              className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 rounded-lg p-3 w-full"
+            />
+            <input
+              type="text"
+              name="subject"
+              placeholder="Subject"
+              required
+              className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 rounded-lg p-3 w-full"
+            />
+            <textarea
+              name="message"
+              placeholder="Your Message"
+              rows={5}
+              required
+              className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 rounded-lg p-3 w-full"
+            />
+            <button
+              type="submit"
+              disabled={loading}
+              className="  font-semibold py-2.5 px-5 rounded-lg w-full transition"
+              style={{
+                backgroundColor: COLORS.cardBackground,
+                text: COLORS.textPrimary,
+              }}
+            >
+              {loading ? "Sending..." : "Send Message"}
+            </button>
+            {emailSubmitted && (
+              <p className="text-green-500 mt-2 text-sm">
+                Email sent successfully!
+              </p>
+            )}
+          </form>
+        </div>
       </div>
     </section>
   );

@@ -46,7 +46,6 @@ export const FAQSectionQuery = `*[_type == "faqPage"][0]{
 }`;
 
 export async function getAFAQData() {
-  console.log(await client.fetch(FAQSectionQuery), "FAQSectionQuery");
   const getFAQ = await client.fetch(FAQSectionQuery);
   return getFAQ.faqs;
 }

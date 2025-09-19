@@ -11,8 +11,7 @@ const ServicesSection = ({ slug }) => {
         console.log("slug is not provided");
       }
       const data = await servicesData(slug);
-      console.log(data, "ser data");
-      console.log(slug, "slug");
+
       if (data) {
         setCategories(data || []);
       } else {

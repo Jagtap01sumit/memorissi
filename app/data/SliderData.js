@@ -16,7 +16,6 @@ export async function fetchSliderImages(slug) {
       img?.asset ? urlFor(img.asset).width(1200).auto("format").url() : null
     );
 
-    console.log(imagesArray, "resolved slider images");
     return imagesArray;
   } catch (err) {
     console.error("Error fetching slider images:", err.message);

@@ -33,7 +33,9 @@ export default function Hero({ slug, imgUrl }) {
 
   return (
     <div
-      className="relative w-full h-[60vh] md:h-[80vh] lg:min-h-screen bg-no-repeat bg-center bg-cover px-2"
+      className={`relative w-full h-[500px] md:h-[80vh] lg:min-h-screen px-2 ${
+        url ? "bg-no-repeat bg-center bg-cover" : ""
+      }`}
       style={{
         backgroundImage: url ? `url('${url}')` : "none",
       }}

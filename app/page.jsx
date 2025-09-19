@@ -16,10 +16,7 @@ export default async function HeroSection() {
   if (!urls || urls.length === 0) {
     // notFound();
   }
-  const heroData = await fetchHeroBySlug(slug);
-  //   if (!heroData) {
-  //     notFound();
-  //   }
+
   return (
     <div
       className="px-2 pb-2 md:pb-4 md:px-4"
@@ -29,7 +26,7 @@ export default async function HeroSection() {
       <HomeIntro slug={slug} />
       <ImageSlider images={urls} />
       <ServicesSection slug={slug} />
-      <ClientTestimonials />
+      <ClientTestimonials slug={slug} />
       <EmailSection />
       <Footer />
     </div>

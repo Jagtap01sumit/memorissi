@@ -29,7 +29,7 @@ export default async function HeroSection({ params }) {
       <HomeIntro slug={slug} />
       <ImageSlider images={urls} />
       <ServicesSection slug={slug} />
-      <ClientTestimonials />
+      <ClientTestimonials slug={slug} />
       <EmailSection />
       <Footer />
     </div>

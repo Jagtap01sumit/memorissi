@@ -8,8 +8,6 @@ import { motion } from "framer-motion";
 
 export default function Gallery({ params }) {
   const { filter } = use(params);
-
-  console.log(filter, "id");
   const [gallery, setGallery] = useState([]);
 
   useEffect(() => {

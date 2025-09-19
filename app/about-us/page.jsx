@@ -1,4 +1,3 @@
-"use client";
 import { Navbar } from "@/app/sections";
 import { COLORS } from "@/app/utils";
 import FaqAccordion from "../components/aboutus/FAQ";

@@ -12,12 +12,8 @@ export async function servicesData(slug) {
 }`;
 
     if (!slug) throw new Error("slug is required");
-    console.log(slug, "card slug");
 
     const data = await client.fetch(query, { slug });
-
-    console.log(data, "category data ");
-
     if (!data || !data.services) {
       return [];
     }

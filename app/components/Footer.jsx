@@ -1,4 +1,3 @@
-"use client";
 import footerData from "../data/FooterData";
 import Link from "next/link";
 import { FaFacebook, FaTwitter, FaYoutube, FaInstagram } from "react-icons/fa";

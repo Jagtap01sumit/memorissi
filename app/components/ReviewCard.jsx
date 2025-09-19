@@ -17,17 +17,13 @@ export default function ReviewCard({
       }}
     >
       {image && (
-        <div className="md:mb-4 mb-1">
-          <img
-            src={image}
-            alt={name}
-            className="w-full md:h-56 h-25 object-cover rounded-xl"
-          />
+        <div className="md:mb-4 mb-1 h-36 md:h-64 overflow-hidden rounded-xl">
+          <img src={image} alt={name} className="w-full h-full object-cover" />
         </div>
       )}
 
       <h3
-        className="md:text-xl text-[8px] font-semibold md:mb-2 mb-1"
+        className="md:text-xl text-[18px] font-semibold md:mb-2 mb-1"
         style={{ text: COLORS.textSecondary }}
       >
         {title}
@@ -39,23 +35,23 @@ export default function ReviewCard({
             key={i}
             className={`${
               i < rating ? "fill-yellow-400 text-yellow-400" : "text-gray-300"
-            } w-2 h-2 sm:w-5 sm:h-5 md:w-6 md:h-6`}
+            } w-5 h-5 md:w-6 md:h-6`}
           />
         ))}
       </div>
 
       <p
-        className=" md:mb-3 md:text-sm text-[7px]"
+        className=" md:mb-3 md:text-sm text-[10px]"
         style={{ text: COLORS.textPrimary }}
       >
         {review}
       </p>
 
       <p
-        className="md:font-medium md:text-xs text-[6px]"
+        className="md:font-medium md:text-xs text-[10px]"
         style={{ text: COLORS.accent }}
       >
-        {name}
+        - {name}
       </p>
 
       {link && (

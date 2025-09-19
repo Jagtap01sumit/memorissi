@@ -19,7 +19,6 @@ export default function FaqAccordion() {
     }
     fetchData();
   }, []);
-  console.log(FAQ, "faqdata");
 
   if (!FAQ) return <p className="text-center text-gray-400">Loading...</p>;
 

@@ -1,18 +1,5 @@
 import { client } from "@/lib/sanityClient";
-import { notFound } from "next/navigation";
 
-const heroQuery = `*[_type == "hero"]{
-  _id,
-  Home_Intro_Para,
-  Home_Intro_Title,
-  Paragraph,
-  Title,
-  logo,
-heroImage->{
-    name,
-    "url": image.asset->url
-  }
-}`;
 export async function fetchHeroBySlug(slug) {
   try {
     if (!slug) {
@@ -28,10 +15,9 @@ export async function fetchHeroBySlug(slug) {
         "heroIntroPara": hero.introPara
       }
     `;
-    console.log(slug, "fetchherodataslug");
+
     const data = await client.fetch(query, { slug });
 
-    console.log(data, "hero data");
     return data;
   } catch (error) {
     console.error("Error fetching hero:", error);

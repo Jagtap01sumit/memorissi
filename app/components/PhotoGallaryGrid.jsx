@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import OptimizedImage from "./OptimizedImage";
 
 export default function GalleryGrid({ gallery }) {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -18,12 +19,10 @@ export default function GalleryGrid({ gallery }) {
             onClick={() => setSelectedImage(img.url)}
           >
             {img ? (
-              <img
-                src={img.url}
-                alt={`${i}`}
-                className="w-full rounded-lg shadow-md object-contain"
-              />
-            ) : null}
+              <OptimizedImage src={img.url} alt={`${i}`} />
+            ) : (
+              <h1>No Images Found</h1>
+            )}
           </div>
         ))}
       </div>{" "}

@@ -4,10 +4,12 @@ import { Navbar } from "@/app/sections";
 import { COLORS } from "@/app/utils";
 import { useEffect, useState } from "react";
 import { fetchHeroBySlug } from "@/app/data/HeroData";
+import { CubeLoader } from "@/app/components/loaders/CubicalLoader";
 
 export default function Hero({ slug, imgUrl }) {
   const [url, setUrl] = useState(null);
   const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function loadHero() {
@@ -29,17 +31,21 @@ export default function Hero({ slug, imgUrl }) {
     loadHero();
   }, [slug, imgUrl]);
 
-  if (!url && !data) return null;
-
   return (
     <div
       className={`relative w-full h-[500px] md:h-[80vh] lg:min-h-screen px-2 ${
-        url ? "bg-no-repeat bg-center bg-cover" : ""
+        url ? "bg-no-repeat bg-center bg-cover" : "bg-gray-200"
       }`}
       style={{
         backgroundImage: url ? `url('${url}')` : "none",
       }}
     >
+      {loading && (
+        <div className="absolute inset-0 z-50 flex items-center justify-center bg-white/70 backdrop-blur-sm">
+          <CubeLoader />
+        </div>
+      )}
+
       <Navbar />
       <div className="absolute inset-0 bg-black/40" />
       <div
@@ -47,12 +53,22 @@ export default function Hero({ slug, imgUrl }) {
         style={{ color: COLORS.textPrimary }}
       >
         <h1 className="text-4xl md:text-6xl font-bold drop-shadow-lg">
-          {data?.heroHeading}
+          {data?.heroHeading || "404"}
         </h1>
         <p className="mt-4 text-lg md:text-2xl max-w-2xl drop-shadow">
-          {data?.heroIntroPara}
+          {data?.heroIntroPara || "Page Not Found!!"}
         </p>
       </div>
+
+      {url && (
+        <img
+          src={url}
+          alt="preload"
+          className="hidden"
+          onLoad={() => setLoading(false)}
+          onError={() => setLoading(false)}
+        />
+      )}
     </div>
   );
 }

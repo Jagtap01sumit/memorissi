@@ -46,3 +46,21 @@ export async function fetchNavbar() {
     return null;
   }
 }
+
+export async function isSlugAvl(slug) {
+  try {
+    const result = await client.fetch(
+      `*[_type == "page" && slug.current == $slug][0]{title}`,
+      { slug }
+    );
+
+    console.log(slug, "checking slug");
+    if (!result) return null;
+
+    console.log(result, "slug is available");
+    return result;
+  } catch (err) {
+    console.error("Error fetching slug data:", err.message);
+    return null;
+  }
+}

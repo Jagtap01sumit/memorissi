@@ -32,7 +32,7 @@ export default function FaqAccordion() {
       </h2>
 
       {FAQ?.map((item, index) => (
-        <div className="mb-4 border-b border-gray-700">
+        <div className="mb-4 border-b border-gray-700" key={index}>
           <button
             className="w-full flex justify-between items-center py-4 text-left"
             onClick={() => toggle(index)}

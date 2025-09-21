@@ -4,7 +4,9 @@ import FaqAccordion from "../components/aboutus/FAQ";
 import Contact from "../components/aboutus/contact";
 import Footer from "../components/Footer";
 import AboutusDetails from "@/app/components/aboutus/aboutusDetails";
+import Hero from "@/app/pages/Hero";
 export default function AboutPage() {
+  const slug = "about-us";
   return (
     <div
       style={{ backgroundColor: COLORS.background }}
@@ -12,6 +14,8 @@ export default function AboutPage() {
     >
       <Navbar />
       <div className="w-full text-white ">
+        <Hero slug={slug} />
+        {/* <HomeIntro slug={slug} /> */}
         <AboutusDetails />
         <FaqAccordion />
         <Contact />

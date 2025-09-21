@@ -1,14 +1,22 @@
-import React from "react";
-import Hero from "../pages/Hero";
-import { ServicesSection } from "@/app/sections";
-import Footer from "../components/Footer";
+import { COLORS } from "@/app/utils";
+import Hero from "@/app/pages/Hero";
+import Footer from "@/app/components/Footer";
+import { EmailSection, HomeIntro, ServicesSection } from "@/app/sections";
+import ImageSlider from "@/app/components/ImageSlider";
+import { ClientTestimonials } from "@/app/sections";
+
 export default function Services() {
+  const slug = "services";
+  console.log(slug, "service slug");
   return (
-    <div>
-      {" "}
+    <div style={{ backgroundColor: COLORS.background }}>
       <div className="mx-2">
-        <Hero slug={"/"} />
+        <Hero slug={slug} />
+        <HomeIntro slug={slug} />
         <ServicesSection slug={"/"} />
+        <ImageSlider slug={slug} />
+        <ClientTestimonials slug={slug} />
+        <EmailSection />
         <Footer />
       </div>
     </div>

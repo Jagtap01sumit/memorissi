@@ -1,6 +1,11 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { FaGithubSquare, FaInstagram, FaLinkedin } from "react-icons/fa";
+import {
+  FaGithubSquare,
+  FaInstagram,
+  FaLinkedin,
+  FaLinkedinIn,
+} from "react-icons/fa";
 import Link from "next/link";
 import { COLORS } from "@/app/utils";
 import { getAboutPageData } from "@/app/data/AboutUsData";
@@ -49,9 +54,8 @@ export default function EmailSection() {
         alert("Failed to send message");
       }
     } catch (error) {
-      console.error(error);
+      console.error("Something went wrong!", error);
       setLoading(false);
-      alert("Something went wrong!");
     }
   };
 
@@ -82,8 +86,8 @@ export default function EmailSection() {
             I’d love to hear from you.
           </p>
           <div className="socials text-3xl flex flex-row gap-2">
-            <Link href="https://github.com/jagtap01sumit">
-              <FaGithubSquare />
+            <Link href="https://in.linkedin.com/in/memoressa-media-494014383">
+              <FaLinkedinIn />
             </Link>
 
             <Link href="https://www.instagram.com/memoressa.media/">

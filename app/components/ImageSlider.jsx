@@ -3,30 +3,17 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Image from "next/image";
-import { urlFor } from "../../lib/sanityClient";
-import { useScroll } from "framer-motion";
-import { useEffect, useState } from "react";
-import { fetchSliderImages } from "../data/SliderData";
 
 export default function ImageSlider({ images }) {
-  // const [images, setImages] = useState([]);
-  // useEffect(() => {
-  //   async function loadSliderImages() {
-  //     const urls = await fetchSliderImages();
-  //     setImages(urls || []);
-  //   }
-  //   loadSliderImages();
-  // }, []);
-
   const settings = {
     dots: false,
     arrows: false,
     infinite: true,
     autoplay: true,
-    autoplaySpeed: 0, // continuous
-    speed: 4000, // adjust for flow speed
-    cssEase: "linear", // smooth flow
-    slidesToShow: 1.5, // number of images visible at once
+    autoplaySpeed: 0,
+    speed: 4000,
+    cssEase: "linear",
+    slidesToShow: 1.5,
     slidesToScroll: 1,
     swipe: true,
     touchMove: true,
@@ -34,21 +21,21 @@ export default function ImageSlider({ images }) {
     pauseOnHover: false,
     responsive: [
       {
-        breakpoint: 768, // mobile
+        breakpoint: 768,
         settings: {
-          slidesToShow: 1.5, // peek next img
+          slidesToShow: 1.5,
         },
       },
       {
-        breakpoint: 1024, // tablet
+        breakpoint: 1024,
         settings: {
           slidesToShow: 2.5,
         },
       },
       {
-        breakpoint: 1440, // desktop
+        breakpoint: 1440,
         settings: {
-          slidesToShow: 3, // side previews
+          slidesToShow: 3,
         },
       },
     ],
@@ -57,7 +44,7 @@ export default function ImageSlider({ images }) {
   return (
     <div className="w-full mx-auto">
       <Slider {...settings}>
-        {images?.length > 0 ? (
+        {images?.length > 0 &&
           images.map((src, idx) => (
             <div
               key={src._id || idx}
@@ -72,10 +59,7 @@ export default function ImageSlider({ images }) {
                 className="object-cover rounded-xl px-2"
               />
             </div>
-          ))
-        ) : (
-          <p className="text-center text-gray-400">No images available</p>
-        )}
+          ))}
       </Slider>
     </div>
   );

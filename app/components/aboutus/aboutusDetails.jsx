@@ -21,7 +21,7 @@ export default function AboutUsDetails() {
   return (
     <div>
       {/* Hero */}
-      <section
+      {/* <section
         className="h-screen bg-fixed bg-center bg-cover flex items-center justify-center px-5 md:px-2"
         style={{
           backgroundImage: `url(${aboutData.hero?.image})`,
@@ -35,7 +35,7 @@ export default function AboutUsDetails() {
             {aboutData.hero?.subtitle}
           </motion.p>
         </motion.div>
-      </section>
+      </section> */}
 
       {/* Me */}
       <motion.div

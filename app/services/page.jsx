@@ -13,7 +13,7 @@ export default function Services() {
       <div className="mx-2">
         <Hero slug={slug} />
         <HomeIntro slug={slug} />
-        <ServicesSection slug={"/"} />
+        <ServicesSection slug={slug} />
         <ImageSlider slug={slug} />
         <ClientTestimonials slug={slug} />
         <EmailSection />

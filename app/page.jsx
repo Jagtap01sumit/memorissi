@@ -5,17 +5,9 @@ import { EmailSection, HomeIntro, ServicesSection } from "@/app/sections";
 import ImageSlider from "@/app/components/ImageSlider";
 import { fetchSliderImages } from "@/app/data/SliderData";
 import { FeaturedStory, ClientTestimonials } from "@/app/sections";
-import { notFound } from "next/navigation";
-import { fetchHeroBySlug } from "@/app/data/HeroData";
-
+import { FloatingSocialButtons } from "@/app/components/socialbuttons/FloatingSocialButtons";
 export default async function HeroSection() {
   const slug = "/";
-
-  const urls = await fetchSliderImages(slug);
-
-  if (!urls || urls.length === 0) {
-    // notFound();
-  }
 
   return (
     <div
@@ -29,6 +21,7 @@ export default async function HeroSection() {
       <ClientTestimonials slug={slug} />
       <EmailSection />
       <Footer />
+      <FloatingSocialButtons />
     </div>
   );
 }

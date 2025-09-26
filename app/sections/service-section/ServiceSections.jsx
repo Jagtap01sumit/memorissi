@@ -46,7 +46,7 @@ const ServicesSection = ({ slug }) => {
       <h5 className="text-sm text-gray-400">SERVICES</h5>
       <h2 className="text-3xl font-serif mb-10">What We Offer</h2>
 
-      <div className="flex flex-wrap justify-center gap-8">
+      <div className="flex flex-wrap justify-center gap-10">
         {!loading &&
           categories.map((service, index) => (
             <ServiceCard

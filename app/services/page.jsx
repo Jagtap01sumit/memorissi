@@ -6,12 +6,12 @@ import {
   HomeIntro,
   ServicesSection,
 } from "@/src/components/sections";
-import { ImageSlider } from "@/src/components/media/ImageSlider";
+import ImageSlider from "@/src/components/media/ImageSlider";
 import { ClientTestimonials } from "@/src/components/sections";
 
 export default function Services() {
   const slug = "services";
-  console.log(slug, "service slug");
+
   return (
     <div style={{ backgroundColor: COLORS.background }}>
       <div className="mx-2">

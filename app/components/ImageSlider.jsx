@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Image from "next/image";
-import { fetchSliderImages } from "@/app/data/SliderData";
+import { fetchSliderImages } from "@/src/data/SliderData";
 import { useEffect, useState } from "react";
 
 export default function ImageSlider({ slug }) {

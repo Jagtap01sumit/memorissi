@@ -10,7 +10,7 @@ import ImageSlider from "@/src/components/media/ImageSlider";
 import { isSlugAvl } from "@/src/data/HeroData";
 import { ClientTestimonials } from "@/src/components/sections";
 import { notFound } from "next/navigation";
-import { FloatingSocialButtons } from "@/app/components/socialbuttons/FloatingSocialButtons";
+import { FloatingSocialButtons } from "@/src/components/common/FloatingSocialButtons";
 export default async function HeroSection({ params }) {
   const slug = params.slug;
 

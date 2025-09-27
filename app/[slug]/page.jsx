@@ -6,7 +6,7 @@ import ImageSlider from "@/app/components/ImageSlider";
 import { isSlugAvl } from "@/app/data/HeroData";
 import { ClientTestimonials } from "@/app/sections";
 import { notFound } from "next/navigation";
-
+import { FloatingSocialButtons } from "@/app/components/socialbuttons/FloatingSocialButtons";
 export default async function HeroSection({ params }) {
   const slug = params.slug;
 
@@ -28,6 +28,7 @@ export default async function HeroSection({ params }) {
       <ClientTestimonials slug={slug} />
       <EmailSection />
       <Footer />
+      <FloatingSocialButtons />
     </div>
   );
 }

@@ -3,8 +3,20 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Image from "next/image";
+import { fetchSliderImages } from "@/app/data/SliderData";
+import { useEffect, useState } from "react";
 
-export default function ImageSlider({ images }) {
+export default function ImageSlider({ slug }) {
+  const [images, setImages] = useState([]);
+  useEffect(() => {
+    const loadImages = async () => {
+      const getImages = await fetchSliderImages(slug);
+      if (getImages) {
+        setImages(getImages);
+      }
+    };
+    loadImages();
+  }, [slug]);
   const settings = {
     dots: false,
     arrows: false,

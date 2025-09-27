@@ -3,7 +3,7 @@ import Hero from "@/app/pages/Hero";
 import Footer from "@/app/components/Footer";
 import { EmailSection, HomeIntro, ServicesSection } from "@/app/sections";
 import ImageSlider from "@/app/components/ImageSlider";
-import { fetchSliderImages } from "@/app/data/SliderData";
+
 import { FeaturedStory, ClientTestimonials } from "@/app/sections";
 import { FloatingSocialButtons } from "@/app/components/socialbuttons/FloatingSocialButtons";
 export default async function HeroSection() {
@@ -16,7 +16,7 @@ export default async function HeroSection() {
     >
       <Hero slug={slug} />
       <HomeIntro slug={slug} />
-      <ImageSlider images={urls} />
+      <ImageSlider slug={slug} />
       <ServicesSection slug={slug} />
       <ClientTestimonials slug={slug} />
       <EmailSection />

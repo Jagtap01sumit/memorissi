@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { COLORS } from "@/app/utils";
+import { COLORS } from "@/src/utils";
 import { getAboutPageData } from "../../data/AboutUsData";
 import { useEffect, useState } from "react";
 

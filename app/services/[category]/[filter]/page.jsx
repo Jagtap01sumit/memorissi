@@ -1,9 +1,9 @@
 "use client";
 
 import { use, useEffect, useState } from "react";
-import { getGrids } from "../../../data/ServiceCategory";
-import GalleryView from "../../../components/PhotoGallaryGrid";
-import { Navbar } from "@/app/sections";
+import { getGrids } from "@/src/data/ServiceCategory";
+import GalleryView from "@/src/components/media/PhotoGallaryGrid";
+import Navbar from "@/src/components/layout/Navbar";
 import { motion } from "framer-motion";
 
 export default function Gallery({ params }) {

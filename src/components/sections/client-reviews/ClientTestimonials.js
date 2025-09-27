@@ -1,5 +1,5 @@
-import ReviewCarousel from "@/app/components/ReviewCarousel";
-import { getClientTestimonials } from "@/app/data/ClientReview";
+import ReviewCarousel from "@/src/components/cards/ReviewCarousel";
+import { getClientTestimonials } from "@/src/data/ClientReview";
 export default async function ClientTestimonials({ slug }) {
   const cards = await getClientTestimonials(slug);
 

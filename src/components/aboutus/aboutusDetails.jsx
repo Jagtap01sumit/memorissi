@@ -1,8 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { COLORS } from "@/app/utils";
-import { getAboutPageData } from "../../data/AboutUsData";
+import { COLORS } from "@/src/utils";
+import { getAboutPageData } from "@/src/data/AboutUsData";
 
 export default function AboutUsDetails() {
   const [aboutData, setAboutData] = useState(null);

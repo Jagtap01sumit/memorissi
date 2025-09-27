@@ -1,9 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import ServiceCard from "@/app/components/ServiceCard";
-import { COLORS } from "@/app/utils";
-import { servicesData } from "@/app/data/ServiceCardData";
-import { CubeLoader } from "@/app/components/loaders/CubicalLoader";
+import ServiceCard from "@/src/components/cards/ServiceCard";
+import { COLORS } from "@/src/utils";
+import { servicesData } from "@/src/data/ServiceCardData";
+import { CubeLoader } from "@/src/components/common/loaders/CubicalLoader";
 
 const ServicesSection = ({ slug }) => {
   const [categories, setCategories] = useState([]);

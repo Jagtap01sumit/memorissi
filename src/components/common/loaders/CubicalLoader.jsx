@@ -1,5 +1,5 @@
 "use client";
-import { COLORS } from "@/app/utils";
+import { COLORS } from "@/src/utils";
 import { useEffect, useState } from "react";
 
 export function CubeLoader({ autoHide = true, delay = 2500 }) {

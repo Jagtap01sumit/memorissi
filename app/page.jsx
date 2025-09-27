@@ -1,13 +1,10 @@
-<<<<<<< Updated upstream
 import { COLORS } from "@/app/utils";
 import Hero from "@/app/pages/Hero";
 import Footer from "@/app/components/Footer";
 import { EmailSection, HomeIntro, ServicesSection } from "@/app/sections";
 import ImageSlider from "@/app/components/ImageSlider";
-
 import { FeaturedStory, ClientTestimonials } from "@/app/sections";
 import { FloatingSocialButtons } from "@/app/components/socialbuttons/FloatingSocialButtons";
-=======
 import { COLORS } from "@/src/utils";
 import Hero from "@/src/components/sections/Hero";
 import Footer from "@/src/components/layout/Footer";
@@ -20,7 +17,7 @@ import ImageSlider from "@/src/components/media/ImageSlider";
 import { FeaturedStory, ClientTestimonials } from "@/src/components/sections";
 import { FloatingSocialButtons } from "@/src/components/common/FloatingSocialButtons";
 import { fetchSliderImages } from "@/src/data/SliderData";
->>>>>>> Stashed changes
+
 export default async function HeroSection() {
   const slug = "/";
   const urls = await fetchSliderImages(slug);

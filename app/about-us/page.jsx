@@ -1,11 +1,11 @@
-import  Navbar  from "@/src/components/layout/Navbar";
+import Navbar from "@/src/components/layout/Navbar";
 import { COLORS } from "@/src/utils";
 import FaqAccordion from "../../src/components/aboutus/FAQ";
 import Contact from "../../src/components/aboutus/contact";
 import Footer from "../../src/components/layout/Footer";
 import AboutusDetails from "@/src/components/aboutus/aboutusDetails";
 import Hero from "@/src/components/sections/Hero";
-import { FloatingSocialButtons } from "@/src/componentS/common/FloatingSocialButtons";
+import { FloatingSocialButtons } from "@/src/components/common/FloatingSocialButtons";
 export default function AboutPage() {
   const slug = "about-us";
   return (

@@ -12,7 +12,7 @@ export default function ServiceCard({ slug, image, logo, title, id }) {
           <img
             src={image}
             alt={title}
-            className="w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-110"
+            className="md:w-full md:h-full h-full w-33 object-cover transition-transform duration-700 ease-in-out group-hover:scale-110"
           />
         )}
 

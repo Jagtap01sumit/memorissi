@@ -5,6 +5,7 @@ import Contact from "../components/aboutus/contact";
 import Footer from "../components/Footer";
 import AboutusDetails from "@/app/components/aboutus/aboutusDetails";
 import Hero from "@/app/pages/Hero";
+import { FloatingSocialButtons } from "@/app/components/socialbuttons/FloatingSocialButtons";
 export default function AboutPage() {
   const slug = "about-us";
   return (
@@ -20,6 +21,7 @@ export default function AboutPage() {
         <FaqAccordion />
         <Contact />
         <Footer />
+        <FloatingSocialButtons />
       </div>
     </div>
   );

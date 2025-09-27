@@ -54,10 +54,10 @@ export async function isSlugAvl(slug) {
       { slug }
     );
 
-    console.log(slug, "checking slug");
+    // console.log(slug, "checking slug");
     if (!result) return null;
 
-    console.log(result, "slug is available");
+    // console.log(result, "slug is available");
     return result;
   } catch (err) {
     console.error("Error fetching slug data:", err.message);

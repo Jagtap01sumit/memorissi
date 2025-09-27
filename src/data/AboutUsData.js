@@ -49,3 +49,31 @@ export async function getAFAQData() {
   const getFAQ = await client.fetch(FAQSectionQuery);
   return getFAQ.faqs;
 }
+
+export const socialMediaQuery = `*[_type == "aboutPage"][0]{
+  contact {
+    email,
+    phone,
+    location,
+    socials[] {
+      name,
+      url
+    }
+  }
+}`;
+export async function getSocialMediaData() {
+  const data = await client.fetch(socialMediaQuery);
+  const {
+    contact: { email, phone, location, socials },
+  } = data;
+  console.log(data);
+  return {
+    email,
+    phone,
+    location,
+    socials: socials.map((s) => ({
+      title: s.name,
+      url: s.url,
+    })),
+  };
+}

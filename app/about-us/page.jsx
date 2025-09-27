@@ -5,6 +5,7 @@ import Contact from "../../src/components/aboutus/contact";
 import Footer from "../../src/components/layout/Footer";
 import AboutusDetails from "@/src/components/aboutus/aboutusDetails";
 import Hero from "@/src/components/sections/Hero";
+import { HomeIntro } from "@/src/components/sections";
 import { FloatingSocialButtons } from "@/src/components/common/FloatingSocialButtons";
 export default function AboutPage() {
   const slug = "about-us";
@@ -16,7 +17,7 @@ export default function AboutPage() {
       <Navbar />
       <div className="w-full text-white ">
         <Hero slug={slug} />
-        {/* <HomeIntro slug={slug} /> */}
+        <HomeIntro slug={slug} />
         <AboutusDetails />
         <FaqAccordion />
         <Contact />

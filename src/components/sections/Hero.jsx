@@ -1,10 +1,10 @@
 "use client";
 
-import { Navbar } from "@/app/sections";
-import { COLORS } from "@/app/utils";
+import Navbar from "../layout/Navbar";
+import { COLORS } from "@/src/utils";
 import { useEffect, useState } from "react";
-import { fetchHeroBySlug } from "@/app/data/HeroData";
-import { CubeLoader } from "@/app/components/loaders/CubicalLoader";
+import { fetchHeroBySlug } from "@/src/data/HeroData";
+import { CubeLoader } from "@/src/components/common/loaders/CubicalLoader";
 
 export default function Hero({ slug, imgUrl }) {
   const [url, setUrl] = useState(null);

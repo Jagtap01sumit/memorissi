@@ -1,7 +1,7 @@
 "use client";
 import { use, useEffect, useState } from "react";
-import { galleries } from "@/app/data/ServiceCategory";
-import { Navbar } from "@/app/sections";
+import { galleries } from "@/src/data/ServiceCategory";
+import Navbar from "@/src/components/layout/Navbar";
 import Link from "next/link";
 
 export default function ServiceCategoryPage({ params }) {

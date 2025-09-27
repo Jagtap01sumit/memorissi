@@ -1,10 +1,14 @@
-import { COLORS } from "@/app/utils";
-import Hero from "@/app/pages/Hero";
-import Footer from "@/app/components/Footer";
-import { EmailSection, HomeIntro, ServicesSection } from "../sections";
-import ImageSlider from "@/app/components/ImageSlider";
-import { isSlugAvl } from "@/app/data/HeroData";
-import { ClientTestimonials } from "@/app/sections";
+import { COLORS } from "@/src/utils";
+import Hero from "@/src/components/sections/Hero";
+import Footer from "@/src/components/layout/Footer";
+import {
+  EmailSection,
+  HomeIntro,
+  ServicesSection,
+} from "@/src/components/sections";
+import ImageSlider from "@/src/components/media/ImageSlider";
+import { isSlugAvl } from "@/src/data/HeroData";
+import { ClientTestimonials } from "@/src/components/sections";
 import { notFound } from "next/navigation";
 import { FloatingSocialButtons } from "@/app/components/socialbuttons/FloatingSocialButtons";
 export default async function HeroSection({ params }) {

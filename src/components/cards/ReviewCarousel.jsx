@@ -2,9 +2,9 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import ReviewCard from "./ReviewCard";
-import FullReviewCard from "./FullReviewCard";
-import { COLORS } from "@/app/utils";
+import ReviewCard from "@/src/components/cards/ReviewCard";
+import FullReviewCard from "@/src/components/cards/FullReviewCard";
+import { COLORS } from "@/src/utils";
 
 export default function ReviewCarousel({ cardData }) {
   const [index, setIndex] = useState(0);

@@ -1,8 +1,8 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import ReelsScroller from "@/app/components/Reel";
+import ReelsScroller from "@/src/components/media/Reel";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { fetchReelsData } from "@/app/data/FeaturedStory";
+import { fetchReelsData } from "@/src/data/FeaturedStory";
 export default function FeaturedStory() {
   const [reels, setReels] = useState([]);
   useEffect(() => {

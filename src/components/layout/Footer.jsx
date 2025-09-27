@@ -1,7 +1,7 @@
-import footerData from "../data/FooterData";
+import footerData from "@/src/data/FooterData";
 import Link from "next/link";
 import { FaFacebook, FaTwitter, FaYoutube, FaInstagram } from "react-icons/fa";
-import { COLORS } from "../utils";
+import { COLORS } from "@/src/utils";
 
 export default function Footer() {
   const { links, socials, copyright } = footerData;

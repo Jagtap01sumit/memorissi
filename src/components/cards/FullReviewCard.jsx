@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { X } from "lucide-react";
-import { COLORS } from "@/app/utils";
+import { COLORS } from "@/src/utils";
 export default function FullReviewCard({ review, onClose }) {
   if (!review) return null;
 

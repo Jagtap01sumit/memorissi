@@ -1,9 +1,13 @@
-import { COLORS } from "@/app/utils";
-import Hero from "@/app/pages/Hero";
-import Footer from "@/app/components/Footer";
-import { EmailSection, HomeIntro, ServicesSection } from "@/app/sections";
-import ImageSlider from "@/app/components/ImageSlider";
-import { ClientTestimonials } from "@/app/sections";
+import { COLORS } from "@/src/utils";
+import Hero from "@/src/components/sections/Hero";
+import Footer from "@/src/components/layout/Footer";
+import {
+  EmailSection,
+  HomeIntro,
+  ServicesSection,
+} from "@/src/components/sections";
+import { ImageSlider } from "@/src/components/media/ImageSlider";
+import { ClientTestimonials } from "@/src/components/sections";
 
 export default function Services() {
   const slug = "services";

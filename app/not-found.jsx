@@ -1,10 +1,7 @@
-"use client";
-
-import React from "react";
-import Hero from "./pages/Hero";
-import { COLORS } from "./utils";
+import Hero from "@/src/components/sections/Hero";
+import { COLORS } from "@/src/utils";
 import Link from "next/link";
-import Footer from "./components/Footer";
+import Footer from "../src/components/layout/Footer";
 export default function NotFound() {
   return (
     <div className="mx-2">

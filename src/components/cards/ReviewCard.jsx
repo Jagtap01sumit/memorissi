@@ -1,5 +1,5 @@
 import { Star } from "lucide-react";
-import { COLORS } from "@/app/utils";
+import { COLORS } from "@/src/utils";
 export default function ReviewCard({
   name,
   review,

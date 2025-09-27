@@ -1,7 +1,6 @@
 "use client";
-import { fetchHeroBySlug } from "@/app/data/HeroData";
-import { COLORS } from "@/app/utils";
-import { notFound } from "next/navigation";
+import { fetchHeroBySlug } from "@/src/data/HeroData";
+import { COLORS } from "@/src/utils";
 import { useEffect, useState } from "react";
 export default function HomeIntro({ slug }) {
   const [data, setData] = useState([]);

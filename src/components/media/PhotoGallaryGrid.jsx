@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { ArrowLeft, ArrowRight, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import OptimizedImage from "./OptimizedImage";
+import OptimizedImage from "@/src/components/common/OptimizedImage";
 
 export default function GalleryGrid({ gallery }) {
   const [selectedIndex, setSelectedIndex] = useState(null);

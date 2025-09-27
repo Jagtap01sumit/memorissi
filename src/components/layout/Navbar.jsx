@@ -4,8 +4,8 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { FiMenu, FiX } from "react-icons/fi";
-import { COLORS } from "@/app/utils";
-import { fetchNavbar } from "@/app/data/HeroData"; // or navbarData.js
+import { COLORS } from "@/src/utils";
+import { fetchNavbar } from "@/src/data/HeroData";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);

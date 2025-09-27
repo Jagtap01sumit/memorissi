@@ -1,8 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
-import { COLORS } from "@/app/utils";
+import { COLORS } from "@/src/utils";
 import { FiChevronDown } from "react-icons/fi";
-import { getAFAQData } from "@/app/data/AboutUsData";
+import { getAFAQData } from "@/src/data/AboutUsData";
 export default function FaqAccordion() {
   const [activeIndex, setActiveIndex] = useState(null);
 

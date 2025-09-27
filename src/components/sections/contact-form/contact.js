@@ -7,8 +7,8 @@ import {
   FaLinkedinIn,
 } from "react-icons/fa";
 import Link from "next/link";
-import { COLORS } from "@/app/utils";
-import { getAboutPageData } from "@/app/data/AboutUsData";
+import { COLORS } from "@/src/utils";
+import { getAboutPageData } from "@/src/data/AboutUsData";
 
 export default function EmailSection() {
   const [aboutData, setAboutData] = useState(null);

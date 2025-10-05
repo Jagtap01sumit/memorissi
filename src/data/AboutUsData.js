@@ -66,7 +66,7 @@ export async function getSocialMediaData() {
   const {
     contact: { email, phone, location, socials },
   } = data;
-  console.log(data);
+  // console.log(data);
   return {
     email,
     phone,
